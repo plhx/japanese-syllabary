@@ -1,0 +1,67 @@
+{
+  "name": "japanese-syllabary",
+  "version": "1.0.0",
+  "description": "Japanese kana utilities: hiragana / katakana / half-width katakana detection and conversion",
+  "keywords": [
+    "japanese",
+    "kana",
+    "hiragana",
+    "katakana",
+    "half-width",
+    "halfwidth",
+    "hankaku",
+    "zenkaku",
+    "dakuten",
+    "converter"
+  ],
+  "homepage": "https://github.com/plhx/japanese-syllabary#readme",
+  "bugs": {
+    "url": "https://github.com/plhx/japanese-syllabary/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/plhx/japanese-syllabary.git"
+  },
+  "license": "MIT",
+  "author": "PlasticHeart",
+  "sideEffects": false,
+  "main": "./dist/japanese-syllabary.cjs",
+  "module": "./dist/japanese-syllabary.mjs",
+  "types": "./dist/japanese-syllabary.d.cts",
+  "unpkg": "./dist/japanese-syllabary.min.js",
+  "jsdelivr": "./dist/japanese-syllabary.min.js",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/japanese-syllabary.d.mts",
+        "default": "./dist/japanese-syllabary.mjs"
+      },
+      "require": {
+        "types": "./dist/japanese-syllabary.d.cts",
+        "default": "./dist/japanese-syllabary.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=14"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "node build.js",
+    "test": "node --test tests/*.test.mjs",
+    "test:vitest": "vitest run",
+    "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\"",
+    "prepack": "npm run clean && npm run build",
+    "prepublishOnly": "npm test"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "vitest": "^4.1.12"
+  }
+}
